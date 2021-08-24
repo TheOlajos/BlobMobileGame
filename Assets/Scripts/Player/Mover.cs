@@ -9,8 +9,8 @@ public class Mover : MonoBehaviour
     protected Vector3 moveDelta;
     protected RaycastHit2D hit;
 
-    protected float ySpeed = 0.75f;
-    protected float xSpeed = 1.0f;
+    protected float ySpeed = 5.75f;
+    protected float xSpeed = 5.0f;
 
 
     public int hitPoint;
@@ -21,12 +21,15 @@ public class Mover : MonoBehaviour
     protected float immuneTime = 1.0f;
     protected float lastImmune;
 
+        public Rigidbody2D rb;
+
     //Push
     protected Vector3 pushDirection;
 
     protected virtual void Start()
     {
         boxCollider = GetComponent<BoxCollider2D>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
 
@@ -39,7 +42,7 @@ public class Mover : MonoBehaviour
         //flip position
         if (moveDelta.x > 0) 
         {
-            transform.localScale = Vector3.one;
+            rb.AddForce = Vector3.one;
         }
         else if (moveDelta.x < 0)
         {
